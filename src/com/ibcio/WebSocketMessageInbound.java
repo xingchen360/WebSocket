@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 
-import net.sf.json.JSONObject;
-
 import org.apache.catalina.websocket.MessageInbound;
 import org.apache.catalina.websocket.WsOutbound;
+
+import net.sf.json.JSONObject;
 
 public class WebSocketMessageInbound extends MessageInbound {
 
@@ -39,6 +39,9 @@ public class WebSocketMessageInbound extends MessageInbound {
 		WebSocketMessageInboundPool.addMessageInbound(this);
 		//向当前连接发送当前在线用户的列表
 		WebSocketMessageInboundPool.sendMessageToUser(this.user, result.toString());
+		//modify-noteshare初始化消息发送
+		String message = "{\"from\":\"管理员\",\"content\":\"欢迎来到聊天平台\",\"timestamp\":1111111111,\"type\":\"message\"}";
+		WebSocketMessageInboundPool.sendMessageToUser(this.user,message.toString());
 	}
 
 	@Override

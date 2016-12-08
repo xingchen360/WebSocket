@@ -102,7 +102,7 @@ Ext.onReady(function() {
 			//初始话WebSocket
 			function initWebSocket() {
 				if (window.WebSocket) {
-					websocket = new WebSocket(encodeURI('ws://localhost:8080/WebSocket/message'));
+					websocket = new WebSocket(encodeURI('ws://localhost:9000/WebSocket/message'));
 					websocket.onopen = function() {
 						//连接成功
 						win.setTitle(title + '&nbsp;&nbsp;(已连接)');
